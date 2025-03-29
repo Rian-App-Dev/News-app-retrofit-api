@@ -1,8 +1,8 @@
 package com.example.newsapp.screens
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
@@ -15,11 +15,12 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavHostController
 import com.example.newsapp.myviewmodel.MyViewmodel
 
 
 @Composable
-fun HomeUi(viewModel: MyViewmodel) {
+fun HomeUi(viewModel: MyViewmodel, navController: NavHostController) {
 
     val response = viewModel.response.value?.articles?: emptyList()
 
@@ -31,7 +32,11 @@ fun HomeUi(viewModel: MyViewmodel) {
 
             items(response){
                 Card(
-                    modifier = Modifier.padding(16.dp),
+                    modifier = Modifier.padding(16.dp)
+                        .clickable {
+                            navController.navigate("fullscreen")
+                            viewModel.article.value = it
+                        },
                     colors = CardDefaults.cardColors(Color.Gray)
                 ){
                     Text(text = it.title)
