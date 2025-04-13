@@ -8,7 +8,6 @@ import com.example.newsapp.models.NewsModels
 import com.example.newsapp.repo.Repo
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import retrofit2.Response
 
 class MyViewmodel : ViewModel() {
 
