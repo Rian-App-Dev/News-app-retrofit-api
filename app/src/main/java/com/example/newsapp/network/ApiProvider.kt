@@ -7,8 +7,6 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 object ApiProvider {
     private val okHttpClient = OkHttpClient.Builder().build()
-
-
     fun providerApi() = Retrofit
             .Builder()
             .baseUrl(BASE_URL)
